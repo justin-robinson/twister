@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 sides=('left' 'right')
 bodyParts=('hand' 'foot')
@@ -13,9 +13,9 @@ colorsLength=${#colors[@]}
 while true; do
 
     # get a random index into each array
-    sideIndex=`expr $RANDOM % $sidesLength`
-    bodyPartIndex=`expr $RANDOM % $bodyPartsLength`
-    colorIndex=`expr $RANDOM % $colorsLength`
+    sideIndex=`jot -r 1 1 ${sidesLength}`
+    bodyPartIndex=`jot -r 1 1 ${bodyPartsLength}`
+    colorIndex=`jot -r 1 1 ${colorsLength}`
 
     # use random indexes to get a random element
     side=${sides[sideIndex]}
@@ -23,8 +23,10 @@ while true; do
     color=${colors[colorIndex]}
 
     # say the command
-    say $side $bodyPart $color
+    command="$side $bodyPart $color"
+    echo $command
+    say $command
 
     # wait 30 seconds
-    sleep 30s
+    sleep 1s
 done
