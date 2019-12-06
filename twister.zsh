@@ -25,6 +25,7 @@ bodyPartsLength=${#bodyParts[@]}
 colorsLength=${#colors[@]}
 
 # say a command every 30 seconds
+commandCount=0
 while true; do
 
     # get a random index into each array
@@ -41,7 +42,8 @@ while true; do
     colorEmoji=${colorEmojis[colorIndex]}
 
     # print and say the command
-    echo $sideEmoji $bodyPartEmoji$colorEmoji
+    (( commandCount+=1 ))
+    echo $commandCount"." $sideEmoji $bodyPartEmoji$colorEmoji
     say $side $bodyPart $color
 
     # wait 30 seconds
