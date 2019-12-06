@@ -13,8 +13,11 @@ if ! type -p "jot" > /dev/null; then
 fi
 
 sides=('left' 'right')
+sideEmojis=(⬅️ ➡️)
 bodyParts=('hand' 'foot')
+bodyPartsEmojis=(🤚 🦶)
 colors=('red' 'blue' 'green' 'yellow')
+colorEmojis=(🔴 🔵 🟢 🟡)
 
 # get length of all arrays
 sidesLength=${#sides[@]}
@@ -31,13 +34,15 @@ while true; do
 
     # use random indexes to get a random element
     side=${sides[sideIndex]}
+    sideEmoji=${sideEmojis[sideIndex]}
     bodyPart=${bodyParts[bodyPartIndex]}
+    bodyPartEmoji=${bodyPartsEmojis[bodyPartIndex]}
     color=${colors[colorIndex]}
+    colorEmoji=${colorEmojis[colorIndex]}
 
-    # say the command
-    command="$side $bodyPart $color"
-    echo $command
-    say $command
+    # print and say the command
+    echo $sideEmoji $bodyPartEmoji$colorEmoji
+    say $side $bodyPart $color
 
     # wait 30 seconds
     sleep 1s
