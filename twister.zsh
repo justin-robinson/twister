@@ -1,5 +1,17 @@
 #!/usr/bin/env zsh
 
+# check that the say command exists
+if ! type -p "say" > /dev/null; then
+  echo "say command not found. exiting"
+  exit 1
+fi
+
+# check that the jot command exists
+if ! type -p "jot" > /dev/null; then
+  echo "jot command not found. exiting"
+  exit 2
+fi
+
 sides=('left' 'right')
 bodyParts=('hand' 'foot')
 colors=('red' 'blue' 'green' 'yellow')
